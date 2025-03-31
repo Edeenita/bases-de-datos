@@ -1,0 +1,35 @@
+<DERExt>
+ <Entity subtype="0" name="camioneros" width="70" x="-942" y="-304" isAssociative="0">
+  <Simple cant1="20" type="integer" name="dni" sk="0" pk="1" cant3="2" cant2="0" null="0" mult="0" parent="" optionSQL="1"/>
+  <Simple cant1="20" type="integer" name="nombre_camionero" sk="0" pk="0" cant3="2" cant2="0" null="0" mult="0" parent="" optionSQL="1"/>
+  <Simple cant1="20" type="integer" name="telefono" sk="0" pk="0" cant3="2" cant2="0" null="0" mult="1" parent="" optionSQL="1"/>
+  <Compound name="direccion" sk="0" pk="0" amount="4" null="0" mult="0" parent="" optionSQL="1">
+   <Simple cant1="20" type="integer" name="calle" sk="0" pk="0" cant3="2" cant2="0" null="0" mult="0" parent="direccion" optionSQL="1"/>
+   <Simple cant1="20" type="integer" name="ciudad" sk="0" pk="0" cant3="2" cant2="0" null="0" mult="0" parent="direccion" optionSQL="1"/>
+   <Simple cant1="20" type="integer" name="depto" sk="0" pk="0" cant3="2" cant2="0" null="1" mult="0" parent="direccion" optionSQL="1"/>
+   <Simple cant1="20" type="integer" name="puerta" sk="0" pk="0" cant3="2" cant2="0" null="0" mult="0" parent="direccion" optionSQL="1"/>
+  </Compound>
+  <Simple cant1="20" type="integer" name="salario" sk="0" pk="0" cant3="2" cant2="0" null="0" mult="0" parent="" optionSQL="1"/>
+ </Entity>
+ <Entity subtype="0" name="paquetes" width="60" x="-597" y="-308" isAssociative="0">
+  <Simple cant1="20" type="integer" name="cod_paquete" sk="0" pk="1" cant3="2" cant2="0" null="0" mult="0" parent="" optionSQL="1"/>
+  <Simple cant1="20" type="integer" name="descripcion" sk="0" pk="0" cant3="2" cant2="0" null="0" mult="0" parent="" optionSQL="1"/>
+  <Compound name="destinatario" sk="0" pk="0" amount="2" null="0" mult="0" parent="" optionSQL="1">
+   <Simple cant1="20" type="integer" name="nombre_completo" sk="0" pk="0" cant3="2" cant2="0" null="0" mult="0" parent="destinatario" optionSQL="1"/>
+   <Simple cant1="20" type="integer" name="direccion_destinatario" sk="0" pk="0" cant3="2" cant2="0" null="0" mult="0" parent="destinatario" optionSQL="1"/>
+  </Compound>
+ </Entity>
+ <Entity subtype="0" name="ciudad" width="50" x="-228" y="-319" isAssociative="0">
+  <Simple cant1="20" type="integer" name="cod_ciudad" sk="0" pk="1" cant3="2" cant2="0" null="0" mult="0" parent="" optionSQL="1"/>
+  <Simple cant1="20" type="integer" name="nombre_ciudad" sk="1" pk="0" cant3="2" cant2="0" null="0" mult="0" parent="" optionSQL="1"/>
+ </Entity>
+ <Entity subtype="0" name="camiones" width="60" x="-1238" y="-308" isAssociative="0">
+  <Simple cant1="20" type="integer" name="matricula" sk="0" pk="1" cant3="2" cant2="0" null="0" mult="0" parent="" optionSQL="1"/>
+  <Simple cant1="20" type="integer" name="modelo" sk="0" pk="0" cant3="2" cant2="0" null="0" mult="0" parent="" optionSQL="1"/>
+  <Simple cant1="20" type="integer" name="tipo" sk="0" pk="0" cant3="2" cant2="0" null="0" mult="0" parent="" optionSQL="1"/>
+  <Simple cant1="20" type="integer" name="potencia" sk="0" pk="0" cant3="2" cant2="0" null="0" mult="0" parent="" optionSQL="1"/>
+ </Entity>
+ <RBinary y="-294" onUpdate1="restrict" max0="1" match1="simple" rolename="" name="ent" onDelete0="restrict" name0="camioneros" onUpdate0="restrict" name1="paquetes" min0="1" match0="simple" x="-714" firstWeak="0" min1="1" max1="N" dep="0" width="40" onDelete1="restrict"/>
+ <RBinary y="-302" onUpdate1="restrict" max0="N" match1="simple" rolename="" name="con" onDelete0="restrict" name0="camioneros" onUpdate0="restrict" name1="camiones" min0="0" match0="simple" x="-1057" firstWeak="0" min1="1" max1="N" dep="0" width="40" onDelete1="restrict"/>
+ <RBinary y="-293.5" onUpdate1="restrict" max0="N" match1="simple" rolename="" name="lle" onDelete0="restrict" name0="paquetes" onUpdate0="restrict" name1="ciudad" min0="1" match0="simple" x="-385" firstWeak="0" min1="1" max1="1" dep="0" width="40" onDelete1="restrict"/>
+</DERExt>

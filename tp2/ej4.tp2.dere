@@ -1,0 +1,48 @@
+<DERExt>
+ <Entity subtype="0" isAssociative="0" x="-806" width="75" y="-218" name="institucion">
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="1" null="0" parent="" name="id_institucion" mult="0"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="" name="nombre" mult="0"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="" name="pais" mult="0"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="" name="region" mult="0"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="" name="ciudad" mult="0"/>
+ </Entity>
+ <Entity subtype="0" isAssociative="0" x="-422" width="45" y="-220" name="ninio">
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="1" null="0" parent="" name="id" mult="0"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="" name="nombre" mult="0"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="" name="apellido" mult="0"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="" name="fecha_nacimiento" mult="0"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="" name="lugar_nacimiento" mult="0"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="1" parent="" name="cuidados_especiales" mult="0"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="1" parent="" name="fecha_retorno" mult="0"/>
+ </Entity>
+ <Entity subtype="0" isAssociative="0" x="-49" width="50" y="-223" name="padres">
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="1" null="0" parent="" name="id_padre" mult="0"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="" name="nombre" mult="0"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="" name="apellido" mult="0"/>
+  <Compound optionSQL="1" amount="2" sk="0" pk="0" null="1" parent="" name="parientes" mult="0">
+   <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="1" parent="parientes" name="datos_pariente" mult="0"/>
+  </Compound>
+ </Entity>
+ <Entity subtype="0" isAssociative="0" x="-476" width="90" y="64" name="data_sanitaria">
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="1" null="0" parent="" name="id_data_sanitaria" mult="0"/>
+  <Compound optionSQL="1" amount="2" sk="0" pk="0" null="1" parent="" name="enfermedades" mult="1">
+   <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="enfermedades" name="enf_1" mult="0"/>
+   <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="enfermedades" name="enf_2" mult="0"/>
+  </Compound>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="" name="enfermedades_pasadas" mult="1"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="" name="estado" mult="0"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="1" parent="" name="tratamiento" mult="1"/>
+ </Entity>
+ <Entity subtype="0" isAssociative="0" x="-664" width="70" y="-22" name="cuidadores">
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="1" null="0" parent="" name="id_cuidados" mult="0"/>
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="0" parent="" name="datos" mult="1"/>
+ </Entity>
+ <RBinary x="-547" width="40" max1="N" onDelete0="restrict" name="esta" y="-200" min0="1" match1="simple" max0="1" match0="simple" onUpdate0="restrict" onUpdate1="restrict" rolename="" min1="1" name1="ninio" onDelete1="restrict" firstWeak="0" name0="institucion" dep="0"/>
+ <RBinary x="-182" width="40" max1="2" onDelete0="restrict" name="rel" y="-208" min0="1" match1="simple" max0="N" match0="simple" onUpdate0="restrict" onUpdate1="restrict" rolename="" min1="0" name1="padres" onDelete1="restrict" firstWeak="0" name0="ninio" dep="0"/>
+ <RBinary x="-418" width="40" max1="1" onDelete0="restrict" name="depends0" y="-36" min0="1" match1="simple" max0="N" match0="simple" onUpdate0="restrict" onUpdate1="restrict" rolename="" min1="1" name1="data_sanitaria" onDelete1="restrict" firstWeak="0" name0="ninio" dep="0"/>
+ <RBinary x="-514.5" width="40" max1="1" onDelete0="restrict" name="tie" y="-101" min0="1" match1="simple" max0="N" match0="simple" onUpdate0="restrict" onUpdate1="restrict" rolename="" min1="1" name1="cuidadores" onDelete1="restrict" firstWeak="0" name0="ninio" dep="0"/>
+ <RBinary x="-761" width="40" max1="1" onDelete0="restrict" name="mgs" y="-61" min0="0" match1="simple" max0="N" match0="simple" onUpdate0="restrict" onUpdate1="restrict" rolename="" min1="1" name1="institucion" onDelete1="restrict" firstWeak="0" name0="cuidadores" dep="0"/>
+ <RBinary x="-191" width="40" max1="1" onDelete0="restrict" name="reg" y="-324" min0="1" match1="simple" max0="1" match0="simple" onUpdate0="restrict" onUpdate1="restrict" rolename="" min1="1" name1="padres" onDelete1="restrict" firstWeak="0" name0="ninio" dep="0">
+  <Simple cant3="2" cant1="20" optionSQL="1" sk="0" cant2="0" type="integer" pk="0" null="1" parent="" name="fecha_regreso" mult="0"/>
+ </RBinary>
+</DERExt>

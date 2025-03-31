@@ -1,0 +1,35 @@
+<DERExt>
+ <Entity subtype="0" x="-254" isAssociative="0" y="298" name="Fabricante" width="70">
+  <Simple cant3="2" optionSQL="1" sk="0" mult="0" type="integer" null="0" cant1="20" name="id_fabricante" pk="1" cant2="0" parent=""/>
+  <Simple cant3="2" optionSQL="1" sk="0" mult="0" type="integer" null="0" cant1="20" name="nombre" pk="0" cant2="0" parent=""/>
+  <Simple cant3="2" optionSQL="1" sk="0" mult="0" type="integer" null="0" cant1="20" name="direccion" pk="0" cant2="0" parent=""/>
+ </Entity>
+ <Entity subtype="0" x="117" isAssociative="0" y="70" name="Departamento" width="80">
+  <Simple cant3="2" optionSQL="1" sk="0" mult="0" type="integer" null="0" cant1="20" name="id_departamento" pk="1" cant2="0" parent=""/>
+  <Simple cant3="2" optionSQL="1" sk="1" mult="0" type="integer" null="0" cant1="20" name="nombre_depto" pk="0" cant2="0" parent=""/>
+ </Entity>
+ <Entity subtype="0" x="-190" isAssociative="0" y="-101" name="Empleado" width="60">
+  <Simple cant3="2" optionSQL="1" sk="0" mult="0" type="integer" null="0" cant1="20" name="num_empleado" pk="1" cant2="0" parent=""/>
+  <Simple cant3="2" optionSQL="1" sk="0" mult="0" type="integer" null="0" cant1="20" name="nombre" pk="0" cant2="0" parent=""/>
+  <Simple cant3="2" optionSQL="1" sk="0" mult="0" type="integer" null="0" cant1="20" name="apellido" pk="0" cant2="0" parent=""/>
+  <Compound optionSQL="1" mult="0" sk="0" null="0" name="direccion" amount="4" pk="0" parent="">
+   <Simple cant3="2" optionSQL="1" sk="0" mult="0" type="integer" null="1" cant1="20" name="piso" pk="0" cant2="0" parent="direccion"/>
+   <Simple cant3="2" optionSQL="1" sk="0" mult="0" type="integer" null="0" cant1="20" name="calle" pk="0" cant2="0" parent="direccion"/>
+   <Simple cant3="2" optionSQL="1" sk="0" mult="0" type="integer" null="1" cant1="20" name="puerta" pk="0" cant2="0" parent="direccion"/>
+   <Simple cant3="2" optionSQL="1" sk="0" mult="0" type="integer" null="0" cant1="20" name="ciudad" pk="0" cant2="0" parent="direccion"/>
+  </Compound>
+ </Entity>
+ <Entity strongEnt="Fabricante" x="87" y="294" name="Producto" weak="1" width="60">
+  <Simple cant3="2" optionSQL="1" sk="0" mult="0" type="integer" null="0" cant1="20" name="cod_fabricante" pk="1" cant2="0" parent=""/>
+  <Simple cant3="2" optionSQL="1" sk="1" mult="0" type="integer" null="0" cant1="20" name="cod_almacen" pk="0" cant2="0" parent=""/>
+  <Simple cant3="2" optionSQL="1" sk="0" mult="0" type="integer" null="0" cant1="20" name="nombre" pk="0" cant2="0" parent=""/>
+  <Simple cant3="2" optionSQL="1" sk="0" mult="0" type="integer" null="0" cant1="20" name="precio" pk="0" cant2="0" parent=""/>
+ </Entity>
+ <Entity subtype="1" x="-109" isAssociative="0" y="108" name="JEFE" width="40"/>
+ <Entity subtype="1" x="-231" isAssociative="0" y="180" name="NO_JEFE" width="55"/>
+ <RBinary firstWeak="0" match1="simple" name0="Fabricante" dep="1" onUpdate1="restrict" rolename="" width="40" max0="1" x="-36" y="317" min0="1" name1="Producto" min1="1" max1="N" onUpdate0="restrict" match0="simple" onDelete1="restrict" name="es de" onDelete0="restrict"/>
+ <RBinary firstWeak="0" match1="simple" name0="Departamento" dep="0" onUpdate1="restrict" rolename="" width="40" max0="1" x="168" y="209" min0="1" name1="Producto" min1="1" max1="N" onUpdate0="restrict" match0="simple" onDelete1="restrict" name="vende" onDelete0="restrict"/>
+ <Hierarchy total="true" centerX="null" centerY="null" exclusive="true" name2="JEFE" name="Hierarchy Empleado" name0="Empleado" name1="NO_JEFE" typeName="tipo" cont="3"/>
+ <RBinary firstWeak="0" match1="simple" name0="NO_JEFE" dep="0" onUpdate1="restrict" rolename="" width="40" max0="N" x="-46" y="219" min0="1" name1="Departamento" min1="1" max1="1" onUpdate0="restrict" match0="simple" onDelete1="restrict" name="trabaja" onDelete0="restrict"/>
+ <RBinary firstWeak="0" match1="simple" name0="JEFE" dep="0" onUpdate1="restrict" rolename="" width="40" max0="1" x="29" y="113" min0="1" name1="Departamento" min1="1" max1="1" onUpdate0="restrict" match0="simple" onDelete1="restrict" name="es jefe" onDelete0="restrict"/>
+</DERExt>

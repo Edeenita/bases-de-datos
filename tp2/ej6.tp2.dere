@@ -1,0 +1,65 @@
+<DERExt>
+ <Entity width="60" isAssociative="0" name="proyecto" y="-328" subtype="0" x="-941">
+  <Simple pk="1" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="id_proyecto" mult="0" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="nombre" mult="0" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="descripcion" mult="0" cant3="2"/>
+  <Compound pk="0" sk="0" amount="4" optionSQL="1" parent="" null="0" name="tipo" mult="0">
+   <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="tipo" cant1="20" null="0" name="software" mult="0" cant3="2"/>
+   <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="tipo" cant1="20" null="0" name="hardware" mult="0" cant3="2"/>
+   <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="tipo" cant1="20" null="0" name="consultoria" mult="0" cant3="2"/>
+   <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="tipo" cant1="20" null="0" name="producto_digital" mult="0" cant3="2"/>
+  </Compound>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="fecha-inicio" mult="0" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="1" name="fecha-finalizacion" mult="0" cant3="2"/>
+  <Compound pk="0" sk="0" amount="3" optionSQL="1" parent="" null="0" name="estado" mult="0">
+   <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="estado" cant1="20" null="0" name="desarrollo" mult="0" cant3="2"/>
+   <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="estado" cant1="20" null="0" name="finalizado" mult="0" cant3="2"/>
+   <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="estado" cant1="20" null="0" name="cancelado" mult="0" cant3="2"/>
+  </Compound>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="presupuesto" mult="0" cant3="2"/>
+ </Entity>
+ <Entity width="105" isAssociative="0" name="equipo de trabajo" y="-332" subtype="0" x="-482">
+  <Simple pk="1" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="id_equipo" mult="0" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="nombre_equipo" mult="0" cant3="2"/>
+ </Entity>
+ <Entity width="60" isAssociative="0" name="empleado" y="-442" subtype="0" x="-115">
+  <Simple pk="1" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="dni" mult="0" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="1" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="mail" mult="0" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="nombre" mult="0" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="apellido" mult="0" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="cargo" mult="0" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="1" name="especialidad" mult="1" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="fecha_contratacion" mult="0" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="salario" mult="0" cant3="2"/>
+  <Compound pk="0" sk="0" amount="3" optionSQL="1" parent="" null="0" name="tipo_contrato" mult="0">
+   <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="tipo_contrato" cant1="20" null="0" name="full-time" mult="0" cant3="2"/>
+   <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="tipo_contrato" cant1="20" null="0" name="part-time" mult="0" cant3="2"/>
+   <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="tipo_contrato" cant1="20" null="0" name="freelancer" mult="0" cant3="2"/>
+  </Compound>
+ </Entity>
+ <Entity width="60" isAssociative="0" name="cliente+" y="-453" subtype="0" x="-1183">
+  <Simple pk="1" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="id_cliente" mult="0" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="1" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="mail" mult="0" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="1" name="nombre_empresa" mult="0" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="1" name="nombre_persona" mult="0" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="contacto" mult="1" cant3="2"/>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="telefono" mult="1" cant3="2"/>
+ </Entity>
+ <Entity width="130" isAssociative="0" name="evaluacion de proyecto" y="-16" subtype="0" x="-1013">
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="fecha_evaluacion" mult="0" cant3="2"/>
+  <Compound pk="0" sk="0" amount="3" optionSQL="1" parent="" null="0" name="resultado" mult="0">
+   <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="resultado" cant1="20" null="0" name="aprobado" mult="0" cant3="2"/>
+   <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="resultado" cant1="20" null="0" name="revision" mult="0" cant3="2"/>
+   <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="resultado" cant1="20" null="0" name="rechazado" mult="0" cant3="2"/>
+  </Compound>
+  <Simple pk="0" cant2="0" sk="0" optionSQL="1" type="integer" parent="" cant1="20" null="0" name="comentarios-tecnicos" mult="0" cant3="2"/>
+ </Entity>
+ <Entity width="45" isAssociative="0" name="lider" y="-415" subtype="1" x="-241"/>
+ <Entity width="60" isAssociative="0" name="no-lider" y="-209" subtype="1" x="-221"/>
+ <RBinary rolename="" dep="0" name1="evaluacion de proyecto" onDelete0="restrict" name="evaluacion" max1="N" onUpdate0="restrict" x="-944" min1="1" match0="simple" y="-125" width="60" firstWeak="0" name0="proyecto" max0="N" min0="1" onDelete1="restrict" match1="simple" onUpdate1="restrict"/>
+ <RBinary rolename="" dep="0" name1="cliente+" onDelete0="restrict" name="contratado" max1="1" onUpdate0="restrict" x="-908" min1="1" match0="simple" y="-441" width="60" firstWeak="0" name0="proyecto" max0="N" min0="1" onDelete1="restrict" match1="simple" onUpdate1="restrict"/>
+ <RBinary rolename="" dep="0" name1="lider" onDelete0="restrict" name="lidera" max1="1" onUpdate0="restrict" x="-357" min1="1" match0="simple" y="-423" width="40" firstWeak="0" name0="equipo de trabajo" max0="1" min0="1" onDelete1="restrict" match1="simple" onUpdate1="restrict"/>
+ <RBinary rolename="" dep="0" name1="no-lider" onDelete0="restrict" name="trab" max1="N" onUpdate0="restrict" x="-393" min1="1" match0="simple" y="-190" width="40" firstWeak="0" name0="equipo de trabajo" max0="1" min0="1" onDelete1="restrict" match1="simple" onUpdate1="restrict"/>
+ <Hierarchy name1="no-lider" name2="lider" centerY="-261" typeName=" " cont="3" name0="empleado" exclusive="false" total="true" centerX="-85" name="Hierarchy empleado"/>
+ <RBinary rolename="" dep="0" name1="equipo de trabajo" onDelete0="restrict" name="trabaj" max1="N" onUpdate0="restrict" x="-677" min1="1" match0="simple" y="-312" width="40" firstWeak="0" name0="proyecto" max0="N" min0="1" onDelete1="restrict" match1="simple" onUpdate1="restrict"/>
+</DERExt>

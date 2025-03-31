@@ -1,0 +1,56 @@
+<DERExt>
+ <Entity name="prestamo" isAssociative="0" y="-298" subtype="0" width="60" x="-731">
+  <Simple type="integer" parent="" name="fecha_prestamo" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+  <Simple type="integer" parent="" name="fecha_devolucion" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+ </Entity>
+ <Entity strongEnt="libro" name="copia_libro" y="-539" width="75" weak="1" x="-957">
+  <Simple type="integer" parent="" name="nro_ejemplar" sk="0" null="0" cant1="20" cant3="2" pk="1" cant2="0" optionSQL="1" mult="0"/>
+  <Simple type="integer" parent="" name="nro_edicion" sk="1" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+  <Simple type="integer" parent="" name="anio_edicion" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+ </Entity>
+ <Entity name="empleado" isAssociative="0" y="-124" subtype="0" width="60" x="-485">
+  <Simple type="integer" parent="" name="dni_empleado" sk="0" null="0" cant1="20" cant3="2" pk="1" cant2="0" optionSQL="1" mult="0"/>
+  <Simple type="integer" parent="" name="cargo" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="1"/>
+  <Simple type="integer" parent="" name="horario" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="1"/>
+ </Entity>
+ <Entity name="biblioteca" isAssociative="0" y="-342" subtype="0" width="70" x="-420">
+  <Simple type="integer" parent="" name="id_biblioteca" sk="0" null="0" cant1="20" cant3="2" pk="1" cant2="0" optionSQL="1" mult="0"/>
+ </Entity>
+ <Entity name="lector" isAssociative="0" y="-259" subtype="0" width="50" x="-1034">
+  <Simple type="integer" parent="" name="dni" sk="0" null="0" cant1="20" cant3="2" pk="1" cant2="0" optionSQL="1" mult="0"/>
+  <Simple type="integer" parent="" name="mail" sk="1" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+  <Simple type="integer" parent="" name="nombre" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+  <Simple type="integer" parent="" name="telefono" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="1"/>
+  <Simple type="integer" parent="" name="direccion" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+ </Entity>
+ <Entity name="libro" isAssociative="0" y="-447" subtype="0" width="45" x="-630">
+  <Simple type="integer" parent="" name="ISBN" sk="0" null="0" cant1="20" cant3="2" pk="1" cant2="0" optionSQL="1" mult="0"/>
+  <Simple type="integer" parent="" name="titulo" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+  <Simple type="integer" parent="" name="autor" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+  <Simple type="integer" parent="" name="editorial" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+  <Simple type="integer" parent="" name="publicacion" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+  <Simple type="integer" parent="" name="genero" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="1"/>
+ </Entity>
+ <Entity name="genero" isAssociative="0" y="-539" subtype="0" width="50" x="-361">
+  <Simple type="integer" parent="" name="id_genero" sk="0" null="0" cant1="20" cant3="2" pk="1" cant2="0" optionSQL="1" mult="0"/>
+  <Simple type="integer" parent="" name="genero" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+ </Entity>
+ <RBinary max1="1" max0="1" x="-625" min0="1" firstWeak="0" onUpdate0="restrict" dep="0" name1="libro" name="lle" onDelete1="restrict" match1="simple" width="40" name0="prestamo" onDelete0="restrict" onUpdate1="restrict" y="-344" match0="simple" min1="1" rolename=""/>
+ <RBinary max1="1" max0="N" x="-583" min0="0" firstWeak="0" onUpdate0="restrict" dep="0" name1="empleado" name="gest" onDelete1="restrict" match1="simple" width="40" name0="prestamo" onDelete0="restrict" onUpdate1="restrict" y="-167" match0="simple" min1="1" rolename=""/>
+ <RBinary max1="N" max0="1" x="-852" min0="1" firstWeak="0" onUpdate0="restrict" dep="0" name1="prestamo" name="pide" onDelete1="restrict" match1="simple" width="40" name0="lector" onDelete0="restrict" onUpdate1="restrict" y="-251" match0="simple" min1="0" rolename=""/>
+ <RBinary max1="N" max0="1" x="-738" min0="1" firstWeak="0" onUpdate0="restrict" dep="1" name1="copia_libro" name="depends0" onDelete1="restrict" match1="simple" width="40" name0="libro" onDelete0="restrict" onUpdate1="restrict" y="-533" match0="simple" min1="1" rolename=""/>
+ <RBinary max1="1" max0="N" x="-424" min0="1" firstWeak="0" onUpdate0="restrict" dep="0" name1="biblioteca" name="trabaja" onDelete1="restrict" match1="simple" width="40" name0="empleado" onDelete0="restrict" onUpdate1="restrict" y="-242" match0="simple" min1="1" rolename=""/>
+ <RBinary max1="N" max0="1" x="-909" min0="1" firstWeak="0" onUpdate0="restrict" dep="0" name1="libro" name="reserva" onDelete1="restrict" match1="simple" width="40" name0="lector" onDelete0="restrict" onUpdate1="restrict" y="-396" match0="simple" min1="0" rolename="">
+  <Simple type="integer" parent="" name="fecha_reserva" sk="0" null="1" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+  <Compound parent="" name="estado" sk="0" null="1" amount="3" pk="0" optionSQL="1" mult="0">
+   <Simple type="integer" parent="estado" name="pendiente" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+   <Simple type="integer" parent="estado" name="cancelada" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+   <Simple type="integer" parent="estado" name="completada" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+  </Compound>
+ </RBinary>
+ <RBinary max1="N" max0="1" x="-385" min0="1" firstWeak="0" onUpdate0="restrict" dep="0" name1="libro" name="est" onDelete1="restrict" match1="simple" width="40" name0="biblioteca" onDelete0="restrict" onUpdate1="restrict" y="-428" match0="simple" min1="1" rolename="">
+  <Simple type="integer" parent="" name="ubicacion" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+  <Simple type="integer" parent="" name="nro_copias" sk="0" null="0" cant1="20" cant3="2" pk="0" cant2="0" optionSQL="1" mult="0"/>
+ </RBinary>
+ <RBinary max1="N" max0="N" x="-593" min0="1" firstWeak="0" onUpdate0="restrict" dep="0" name1="libro" name="es" onDelete1="restrict" match1="simple" width="40" name0="genero" onDelete0="restrict" onUpdate1="restrict" y="-522" match0="simple" min1="1" rolename=""/>
+</DERExt>

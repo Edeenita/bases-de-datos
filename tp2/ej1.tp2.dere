@@ -1,0 +1,7 @@
+<DERExt>
+ <Entity name="padres" strongEnt="niño" width="50" weak="1" x="40" y="-225"/>
+ <Entity subtype="0" name="niño" width="40" x="-394" y="-225" isAssociative="0">
+  <Simple cant1="20" type="integer" name="id" sk="0" pk="0" cant3="2" cant2="0" null="0" mult="0" parent="" optionSQL="1"/>
+ </Entity>
+ <RBinary y="-207" onUpdate1="restrict" max0="1" match1="simple" rolename="" name="depends0" onDelete0="restrict" name0="niño" onUpdate0="restrict" name1="padres" min0="1" match0="simple" x="-164" firstWeak="0" min1="1" max1="N" dep="1" width="40" onDelete1="restrict"/>
+</DERExt>
