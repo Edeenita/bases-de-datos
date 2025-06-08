@@ -141,3 +141,144 @@ check(
        )
 );
 
+--Ejercicio 3
+--Para el esquema de la figura cuyo script de creación de tablas lo podes descargar de aquí
+--A. Controlar que las nacionalidades sean &#39;Argentina&#39; &#39;Español&#39; &#39;Inglés&#39; &#39;Alemán&#39; o &#39;Chilena&#39;.
+alter table articulo
+add constraint ck_nacionalidad
+check ( nacionalidad in ('Argentina', 'Español', 'Inglés', 'Alemán', 'Chilena' ));
+--B. Para las fechas de publicaciones se debe considerar que sean fechas posteriores o iguales
+--al 2010.
+alter table articulo
+add constraint fecha_posterior_2010
+check ( fecha_publicacion >= '2010-01-01' );
+--C. Cada palabra clave puede aparecer como máximo en 5 artículos.
+alter table articulo
+add constraint max_token_art
+check (
+    not exists(
+        select 1
+        from contiene c
+        group by c.cod_palabra
+        having (count(*)) > 5
+        )
+    );
+--D. Sólo los autores argentinos pueden publicar artículos que contengan más de 10 palabras
+--claves, pero con un tope de 15 palabras, el resto de los autores sólo pueden publicar
+--artículos que contengan hasta 10 palabras claves.
+create assertion max_token_arg
+check(not exists(
+       select 1
+       from articulo a
+       join contiene co on a.id_articulo = co.id_articulo
+       where a.nacionalidad = 'Argentino'
+       group by co.cod_palabra
+       having (count(co.cod_palabra)) > 15
+)and not exists(
+              select 1
+       from articulo a
+       join contiene co on a.id_articulo = co.id_articulo
+       where a.nacionalidad <> 'Argentino'
+       group by co.cod_palabra
+       having (count(co.cod_palabra)) > 10
+));
+
+--Ejercicio 4
+--Para el esquema de la figura cuyo script de creación de tablas lo podes descargar de aquí
+--A. La modalidad de la imagen médica puede tomar los siguientes valores RADIOLOGIA
+--CONVENCIONAL, FLUOROSCOPIA, ESTUDIOS RADIOGRAFICOS CON
+--FLUOROSCOPIA, MAMOGRAFIA, SONOGRAFIA,
+alter table imagen_medica
+add constraint modalidad_imagen_tomas
+check ( modalidad in ('RADIOLOGIA', 'CONVENCIONAL', 'FLUOROSCOPIA',
+                      'ESTUDIOS RADIOGRAFICOS CON FLUOROSCOPIA',
+                      'MAMOGRAFIA', 'SONOGRAFIA'));
+--B. Cada imagen no debe tener más de 5 procesamientos.
+alter table procesamiento
+add constraint max_proces
+check ( not exists(
+            select 1
+            from procesamiento p
+            group by p.id_paciente, p.id_imagen
+            having count(*) > 5
+        )
+    )
+--C. Agregue dos atributos de tipo fecha a las tablas Imagen_medica y Procesamiento, una
+--indica la fecha de la imagen y la otra la fecha de procesamiento de la imagen y controle
+--que la segunda no sea menor que la primera.
+ALTER TABLE imagen_medica
+ADD COLUMN fecha_img date;
+
+ALTER TABLE procesamiento
+ADD COLUMN fecha_proc date;
+
+create assertion control_fechas_imgmed_proces
+check(not exists(
+       select 1
+       from imagen_medica im
+       join procesamiento p on im.id_imagen = p.id_imagen
+       where fecha_img > fecha_proc
+));
+--D. Cada paciente sólo puede realizar dos FLUOROSCOPIA anuales.
+ALTER TABLE imagen_medica
+   ADD CONSTRAINT ck_max_fluoroscopia
+   CHECK ( NOT EXISTS (
+                SELECT 1
+                FROM imagen_medica
+                WHERE modalidad = 'FLUOROSCOPIA'
+                GROUP BY id_paciente, extract(year from fecha_img)
+                HAVING COUNT(*) > 2 ));
+--E. No se pueden aplicar algoritmos de costo computacional “O(n)” a imágenes de
+--FLUOROSCOPIA
+CREATE ASSERTION
+   CHECK ( NOT EXISTS (
+                SELECT 1
+                FROM imagen_medica im
+                JOIN procesedimiento p on (im.id_imagen = p.id_imagen and im.id_paciente = p.id_paciente)
+                JOIN algoritmo a on p.id_algoritmo = a.id_algoritmo
+                WHERE im.modalidad = 'FLUOROSCOPIA'
+                    and a.costo_computacional = '0(n)'
+             )
+       );
+
+--Ejercicio 5
+--A. Los descuentos en las ventas son porcentajes y deben estar entre 0 y 100.
+alter table ventas
+add constraint porc_desc
+check ( descuento between (0 and 100));
+--B. Los descuentos realizados en fechas de liquidación deben superar el 30%.
+create assertion fec_liq_desc_30
+check(
+       not exists(
+            select 1
+            from venta v
+            join fecha_liq_ fl on (
+                    extract(day from v.fecha) = fl.dia_liq
+                    and
+                    extract(month from v.fecha) = fl.mes_liq
+            )
+            where v.descuento <= 30
+       )
+);
+--C. Las liquidaciones de Julio y Diciembre no deben superar los 5 días.
+       create assertion max_dis_liq
+check(
+       not exists(
+            select 1
+            from fecha_liq
+            where mes_liq not in (7 and 12)
+            group by cant_dias
+            having count(cant_dias) < 5
+       )
+);
+--D. Las prendas de categoría ‘oferta’ no tienen descuentos.
+CREATE ASSERTION ck_oferta_sin_descuento
+CHECK (
+    NOT EXISTS (
+        SELECT 1
+        FROM venta v
+        JOIN PRENDA p ON v.id_prenda = p.id_prenda
+        WHERE p.categoria = 'oferta'
+          AND v.descuento > 0.00
+    )
+);
